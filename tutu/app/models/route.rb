@@ -1,3 +1,3 @@
-class Route < ActiveRecord::Base
+class Route < ApplicationRecord
   validates :name, presence: true
 end
