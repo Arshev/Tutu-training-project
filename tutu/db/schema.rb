@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 20160920165946) do
 
   create_table "tickets", force: :cascade do |t|
     t.string   "serial_number"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "railway_station_id"
-    t.index ["railway_station_id"], name: "index_tickets_on_railway_station_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "departure_station_id"
+    t.integer  "arrival_station_id"
   end
 
   create_table "trains", force: :cascade do |t|
