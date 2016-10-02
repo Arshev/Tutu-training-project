@@ -5,5 +5,23 @@
   <%= @train.number_train %>
 </p>
 
+<p>
+  <strong>Назначен маршрут:</strong>
+  <% if @train.route.present? %>
+  <%= @train.route.name %>
+  <% else %>
+  Не указано
+  <% end %>
+</p>
+
+<p>
+  <strong>Текущая станция:</strong>
+  <% if @train.current_station.present? %>
+  <%= @train.current_station.title %>
+  <% else %>
+  Не указано
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
