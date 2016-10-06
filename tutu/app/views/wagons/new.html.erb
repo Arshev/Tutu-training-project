@@ -1,42 +1,5 @@
 <h1>Создаем вагон</h1>
 
-<%= form_for(@wagon) do |f| %>
-  <% if @wagon.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@wagon.errors.count, "error") %> prohibited this wagon from being saved:</h2>
-
-      <ul>
-      <% @wagon.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :type_wagon %>
-    <%= f.text_field :type_wagon %>
-  </div>
-
-  <div class="field">
-    <%= f.label :quantity_top_place %>
-    <%= f.text_field :quantity_top_place %>
-  </div>
-
-  <div class="field">
-    <%= f.label :quantity_down_place %>
-    <%= f.text_field :quantity_down_place %>
-  </div>
-
-  <div class="field">
-  <%= f.label :train, "К какому поезду добавляем вагон" %>
-  <%= f.collection_select :train_id, Train.all, :id, :number_train %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit 'Создать' %>
-  </div>
-<% end %>
-
+<%= render 'form', wagon: @wagon %>
 
 <%= link_to 'Назад', wagons_path %>
