@@ -23,5 +23,76 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Информация по вагонам:</strong>
+Всего вагонов:
+
+  <% arr = [] %>
+  <% @train.wagons.each do |wagon| %>
+    <% arr << wagon %>
+  <% end %>
+  <%= arr.size %>
+</p>
+<p>
+Всего плацкартных вагонов:
+
+  <% arr2 = [] %>
+  <% @train.wagons.each do |wagon| %>
+    <% if wagon.type_wagon == 'Плацкарт' %>
+      <% arr2 << wagon %>
+    <% end %>
+  <% end %>
+  <%= arr2.size %>
+</p>
+
+<p>
+Всего купейных вагонов:
+
+  <% arr3 = [] %>
+  <% @train.wagons.each do |wagon| %>
+    <% if wagon.type_wagon == 'Купе' %>
+      <% arr3 << wagon %>
+    <% end %>
+  <% end %>
+  <%= arr3.size %>
+</p>
+
+<p>
+Кол-во мест в купейных вагонах:
+
+<% place_in_kupe_top = 0 %>
+<% place_in_kupe_down = 0 %>
+
+  <% @train.wagons.each do |wagon| %>
+    <% if wagon.type_wagon == 'Купе' %>
+      <% place_in_kupe_top += wagon.quantity_top_place %>
+      <% place_in_kupe_down += wagon.quantity_down_place %>
+    <% end %>
+  <% end %>
+  Верхних:
+  <%= place_in_kupe_top %>
+  Нижних:
+  <%= place_in_kupe_down %>
+</p>
+
+<p>
+Кол-во мест в плацкартных вагонах:
+
+<% place_in_plac_top = 0 %>
+<% place_in_plac_down = 0 %>
+
+  <% @train.wagons.each do |wagon| %>
+    <% if wagon.type_wagon == 'Плацкарт' %>
+      <% place_in_plac_top += wagon.quantity_top_place %>
+      <% place_in_plac_down += wagon.quantity_down_place %>
+    <% end %>
+  <% end %>
+  Верхних:
+  <%= place_in_plac_top %>
+  Нижних:
+  <%= place_in_plac_down %>
+</p>
+
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

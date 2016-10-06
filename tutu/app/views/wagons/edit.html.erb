@@ -18,6 +18,10 @@
   <%= f.collection_select :type_wagon, Wagon.all, :type_wagon, :type_wagon %>
   </div>
 
+  <div class="actions">
+    <%= f.submit 'Изменить' %>
+  </div>
+
   <div class="field">
     <%= f.label :type_wagon %>
     <%= f.text_field :type_wagon %>
