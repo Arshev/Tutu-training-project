@@ -1,19 +1,19 @@
 class WagonsController < ApplicationController
-  before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_action :set_wagon, only: [:show, :edit, :update, :destroy]
   
   def index
-    @routes = Wagon.all
+    @wagons = Wagon.all
   end
 
   def show
   end
 
   def new
-    @route = Wagon.new
+    @wagon = Wagon.new
   end
 
   def create
-    @route = Wagon.new(route_params)
+    @wagon = Wagon.new(wagon_params)
 
     if @wagon.save
       redirect_to @wagon
