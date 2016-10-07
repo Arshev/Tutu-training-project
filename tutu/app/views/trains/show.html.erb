@@ -26,23 +26,12 @@
 <p>
   <strong>Информация по вагонам:</strong>
 Всего вагонов:
-
-  <% arr = [] %>
-  <% @train.wagons.each do |wagon| %>
-    <% arr << wagon %>
-  <% end %>
-  <%= arr.size %>
+  <%= @train.wagons.count %>
 </p>
 <p>
 Всего плацкартных вагонов:
 
-  <% arr2 = [] %>
-  <% @train.wagons.each do |wagon| %>
-    <% if wagon.type_wagon == 'Плацкарт' %>
-      <% arr2 << wagon %>
-    <% end %>
-  <% end %>
-  <%= arr2.size %>
+  <%= @train.count_wagon('Плацкарт') %>
 </p>
 
 <p>

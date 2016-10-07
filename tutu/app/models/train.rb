@@ -5,4 +5,17 @@ class Train < ApplicationRecord
   has_many :wagons
 
   validates :number_train, presence: true
+
+  def self.count_wagon(type)
+    x = 0
+    loop do
+    @train.wagons.each do |wagon|
+        if wagon.type_wagon == type
+        x += 1
+        end
+      end
+      break
+    end
+    x
+  end
 end
