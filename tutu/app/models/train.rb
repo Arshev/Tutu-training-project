@@ -6,7 +6,7 @@ class Train < ApplicationRecord
 
   validates :number_train, presence: true
 
-  def self.count_wagon(type)
+  def count_wagon(type)
     x = 0
     loop do
     @train.wagons.each do |wagon|
