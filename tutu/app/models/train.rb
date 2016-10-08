@@ -8,14 +8,13 @@ class Train < ApplicationRecord
 
   def count_wagon(type)
     x = 0
-    loop do
+    
     @train.wagons.each do |wagon|
         if wagon.type_wagon == type
         x += 1
         end
       end
-      break
-    end
-    x
+      x
   end
+  
 end
