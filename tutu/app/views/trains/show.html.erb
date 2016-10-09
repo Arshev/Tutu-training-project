@@ -23,5 +23,37 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Информация по вагонам:</strong>
+Всего вагонов:
+  <%= @train.wagons.count %>
+</p>
+<p>
+Всего плацкартных вагонов:
+
+<%= @train.count_wagon('Плацкарт') %>
+</p>
+
+<p>
+Всего купейных вагонов:
+
+<%= @train.count_wagon('Купе') %>
+</p>
+
+<p>
+Кол-во мест в купейных вагонах:
+
+<%= @train.count_wagon_seats('Купе') %>
+  
+</p>
+
+<p>
+Кол-во мест в плацкартных вагонах:
+
+<%= @train.count_wagon_seats('Плацкарт') %>
+
+</p>
+
+
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>

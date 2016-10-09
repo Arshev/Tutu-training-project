@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Тип вагона:</strong>
+  <%= @wagon.type_wagon %>
+</p>
+
+<p>
+  <strong>Кол-во верхних мест</strong>
+  <%= @wagon.quantity_top_place %>
+</p>
+
+<p>
+  <strong>Кол-во нижних мест</strong>
+  <%= @wagon.quantity_down_place %>
+</p>
+
+<p>
+  <strong>Прицеплен к поезду:</strong>
+  <% if @wagon.train.present? %>
+  <%= @wagon.train.number_train %>
+  <% else %>
+  Не указано
+  <% end %>
+</p>
+
+<%= link_to 'Редактировать', edit_wagon_path(@wagon) %> |
+<%= link_to 'Назад', wagons_path %>
