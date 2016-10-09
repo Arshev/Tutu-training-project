@@ -8,13 +8,27 @@ class Train < ApplicationRecord
 
   def count_wagon(type)
     x = 0
-    
-    @train.wagons.each do |wagon|
+    self.wagons.each do |wagon|
         if wagon.type_wagon == type
         x += 1
         end
       end
       x
   end
+
+  def count_wagon_seats(type)
+    place_in_top = 0
+    place_in_down = 0
+
+    self.wagons.each do |wagon|
+      if wagon.type_wagon == type
+        place_in_top += wagon.quantity_top_place
+        place_in_down += wagon.quantity_down_place
+      end
+    end
+   "Верхних: #{place_in_top} Нижних: #{place_in_down}"
+  end
+
+  
   
 end
