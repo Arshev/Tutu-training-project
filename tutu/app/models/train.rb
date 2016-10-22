@@ -16,6 +16,13 @@ class Train < ApplicationRecord
       x
   end
 
+  def number_wagon
+    self.wagons.each do |wagon|
+      @number = wagon.number_wagon
+    end
+    @number
+  end
+
   def count_wagon_seats(type)
     place_in_top = 0
     place_in_down = 0
