@@ -1,5 +1,3 @@
-class SvCarriage < Carriage
-
+class SvWagon < Wagon
   validates :bottom_seats, presence: true
-  
 end
