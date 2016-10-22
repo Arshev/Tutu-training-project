@@ -31,25 +31,25 @@
 <p>
 Всего плацкартных вагонов:
 
-<%= @train.wagons.where(type: 'EconomyWagon').count %>
+<%= @train.wagons.economy.count %>
 </p>
 
 <p>
 Всего купейных вагонов:
 
-<%= @train.wagons.where(type: 'CoupeWagon').count %>
+<%= @train.wagons.coupe.count %>
 </p>
 
 <p>
 Всего СВ вагонов:
 
-<%= @train.wagons.where(type: 'SvWagon').count %>
+<%= @train.wagons.sv.count %>
 </p>
 
 <p>
 Всего сидячих вагонов:
 
-<%= @train.wagons.where(type: 'SeatingWagon').count %>
+<%= @train.wagons.seating.count %>
 </p>
 
 <p>

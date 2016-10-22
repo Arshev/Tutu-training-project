@@ -6,6 +6,11 @@ class Wagon < ApplicationRecord
 
   before_validation :set_number
 
+  scope :economy, -> { where(type:'EconomyWagon')}
+  scope :coupe, -> { where(type:'CoupeWagon')}
+  scope :sv, -> { where(type:'SvWagon')}
+  scope :seating, -> { where(type:'SeatingWagon')}
+
   private
   
   def set_number
