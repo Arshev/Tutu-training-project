@@ -6,6 +6,7 @@ class Wagon < ApplicationRecord
 
   before_validation :set_number
 
+  default_scope{ order(:number_wagon) }
   scope :economy, -> { where(type:'EconomyWagon')}
   scope :coupe, -> { where(type:'CoupeWagon')}
   scope :sv, -> { where(type:'SvWagon')}
