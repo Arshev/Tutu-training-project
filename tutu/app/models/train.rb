@@ -21,9 +21,9 @@ class Train < ApplicationRecord
     place_in_down = 0
 
     self.wagons.each do |wagon|
-      if wagon.type_wagon == type
-        place_in_top += wagon.quantity_top_place
-        place_in_down += wagon.quantity_down_place
+      if wagon.type == type
+        place_in_top += wagon.top_seats
+        place_in_down += wagon.bottom_seats
       end
     end
    "Верхних: #{place_in_top} Нижних: #{place_in_down}"

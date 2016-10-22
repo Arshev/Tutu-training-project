@@ -31,27 +31,53 @@
 <p>
 Всего плацкартных вагонов:
 
-<%= @train.count_wagon('Плацкарт') %>
+<%= @train.wagons.where(type: 'EconomyWagon').count %>
 </p>
 
 <p>
 Всего купейных вагонов:
 
-<%= @train.count_wagon('Купе') %>
+<%= @train.wagons.where(type: 'CoupeWagon').count %>
+</p>
+
+<p>
+Всего СВ вагонов:
+
+<%= @train.wagons.where(type: 'SvWagon').count %>
+</p>
+
+<p>
+Всего сидячих вагонов:
+
+<%= @train.wagons.where(type: 'SeatingWagon').count %>
 </p>
 
 <p>
 Кол-во мест в купейных вагонах:
 
-<%= @train.count_wagon_seats('Купе') %>
+<%= @train.count_wagon_seats('CoupeWagon') %>
   
 </p>
 
 <p>
 Кол-во мест в плацкартных вагонах:
 
-<%= @train.count_wagon_seats('Плацкарт') %>
+<%= @train.count_wagon_seats('EconomyWagon') %>
 
+</p>
+
+<p>
+Кол-во мест в СВ вагонах:
+
+<%= @train.count_wagon_seats('SvWagon') %>
+  
+</p>
+
+<p>
+Кол-во мест в сидячих вагонах:
+
+<%= @train.count_wagon_seats('SeatingWagon') %>
+  
 </p>
 
 
