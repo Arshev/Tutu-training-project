@@ -16,16 +16,10 @@ class Train < ApplicationRecord
       x
   end
 
-  def number_wagon
-    self.wagons.each do |wagon|
-      @number = wagon.number_wagon
-    end
-    @number
-  end
-
   def count_wagon_seats(type)
     place_in_top = 0
     place_in_down = 0
+    @arr_places = []
 
     self.wagons.each do |wagon|
       if wagon.type == type
@@ -33,7 +27,9 @@ class Train < ApplicationRecord
         place_in_down += wagon.bottom_seats
       end
     end
-   "Верхних: #{place_in_top} Нижних: #{place_in_down}"
+    @arr_places << place_in_top
+    @arr_places << place_in_down
+    @arr_places
   end
 
   

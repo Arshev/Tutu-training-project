@@ -82,7 +82,10 @@
 
 
 <p>Номера вагонов в составе:
-<%= @train.number_wagon %>
+
+<% @train.wagons.each do |wagon| %>
+    <%=  wagon.number_wagon %>
+  <% end %>
 </p>
  
 
