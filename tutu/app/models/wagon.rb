@@ -11,6 +11,7 @@ class Wagon < ApplicationRecord
   scope :coupe, -> { where(type:'CoupeWagon')}
   scope :sv, -> { where(type:'SvWagon')}
   scope :seating, -> { where(type:'SeatingWagon')}
+  scope :sort_head, -> { order(:number_wagon) }
 
   private
   
