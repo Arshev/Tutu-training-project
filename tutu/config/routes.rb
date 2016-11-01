@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   end
   resources :railway_stations do 
     patch :update_position, on: :member
+    patch :update_time_arrival, on: :member
+    patch :update_time_departure, on: :member
   end
   resources :routes
   resource :search, only: [:new, :show, :edit]
