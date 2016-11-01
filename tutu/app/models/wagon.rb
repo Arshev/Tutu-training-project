@@ -1,7 +1,7 @@
 class Wagon < ApplicationRecord
   belongs_to :train
 
-  validates :type, :quantity_top_place, :quantity_down_place, presence: true
+  validates :quantity_top_place, :quantity_down_place, presence: true
   validates :number_wagon, uniqueness: { scope: :train_id }
 
   before_validation :set_number
