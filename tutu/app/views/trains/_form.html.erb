@@ -26,6 +26,12 @@
   <%= f.collection_select :route_id, Route.all, :id, :name %>
   </div>
 
+  <div class="field">
+  <p>Сортировка вагонов: </p>
+   <p>С хвоста<%= radio_button_tag(:sort_wagons, true) %></p>
+   <p>С головы <%= radio_button_tag(:sort_wagons, false) %></p>
+   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
