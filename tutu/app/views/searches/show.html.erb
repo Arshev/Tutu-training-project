@@ -17,3 +17,18 @@
    
   </tbody>
 </table>
+
+<%= form_tag(search_train_search_path, method: "post") do %>
+  <strong><%= label_tag(:q, "Выберите начальную станцию:") %></strong>
+  <% @railway_stations.each do |station| %>
+  <%= check_box_tag(:start_station_id, station.id) %>
+  <%= label_tag(:railway_station_id, station.title) %>
+  <% end %>
+  </br><strong><%= label_tag(:q, "Выберите конечную станцию:") %></strong>
+  <% @railway_stations.each do |station| %>
+  <%= check_box_tag(:end_station_id, station.id) %>
+  <%= label_tag(:railway_station_id, station.title) %>
+  <% end %>
+  <%= submit_tag("Search") %>
+<% end %>
+

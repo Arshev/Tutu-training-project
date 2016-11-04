@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     patch :update_time_departure, on: :member
   end
   resources :routes
-  resource :search, only: [:new, :show, :edit]
+  resource :search, only: [:new, :show, :edit] do
+    post :search_train, on: :member
+  end
   get 'welcome/index'
 
   root 'welcome#index'
