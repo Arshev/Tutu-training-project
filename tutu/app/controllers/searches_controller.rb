@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
   end
 
   def search_train
-    Search.search_train(params[:start_station_id], params[:end_station_id])
+    @search_result = Search.search_train(params[:start_station_id], params[:end_station_id])
 
     render :result
   end
