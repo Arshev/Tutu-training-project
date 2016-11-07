@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resource :search, only: [:new, :show, :edit] do
     post :search_train, on: :member
   end
+  resource :ticket do
+    get :buy_tickets, on: :member
+  end
+
   get 'welcome/index'
 
   root 'welcome#index'
