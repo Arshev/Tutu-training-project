@@ -6,7 +6,7 @@ class TicketsController < ApplicationController
     @end_station_id = params[:end_station_id]
     @train = params[:train]
 
-    render :new
+    render :show
   end
 
   def show
