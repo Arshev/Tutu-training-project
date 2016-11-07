@@ -1,1 +1,19 @@
 <h1>Ваш билет</h1>
+
+<table>
+  <tbody>
+  <tr>
+    <th>Номер билета:</th>
+    <td><%= @ticket.number %></td>
+  </tr>
+  <tr>
+    <th>Номер поезда:</th>
+    <td><%= @ticket.train.number %></td>
+  </tr>
+  <tr>
+    <th>Маршрут:</th>
+    <td><%= @ticket.train.route.name %></td>
+  </tr>
+  </tbody>
+</table>
+

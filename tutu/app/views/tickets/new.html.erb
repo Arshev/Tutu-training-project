@@ -5,7 +5,7 @@
 <%= label_tag(:user_name, "ФИО") %>
 <%= text_field_tag(:passport) %>
 <%= label_tag(:passport, "Паспорт") %>
-<%= hidden_field_tag(:start_station_id, @start_station_id) %>
-<%= hidden_field_tag(:end_station_id, @end_station_id) %>
-<%= hidden_field_tag(:start_station_id, @train) %>
+<%= hidden_field_tag(:start_station_id, @ticket.start_station_id) %>
+<%= hidden_field_tag(:end_station_id, @ticket.end_station_id) %>
+<%= hidden_field_tag(:train, @ticket.train) %>
 <%= submit_tag "Купить" %>
