@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def create
-    @ticket = Ticket.new(serial_number: :id, train_id: params[:train], departure_station_id: params[:start_station_id], arrival_station_id: params[:end_station_id])
+    @ticket = Ticket.new(train_id: params[:train], departure_station_id: params[:start_station_id], arrival_station_id: params[:end_station_id])
 
     if @ticket.save
       render :show
