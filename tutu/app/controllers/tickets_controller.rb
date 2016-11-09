@@ -1,9 +1,10 @@
 class TicketsController < ApplicationController
 
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
+  before_action :set_serial_number_ticket, only: [:create]
 
   def create
-    @ticket = Ticket.new(train_id: params[:train], departure_station_id: params[:start_station_id], arrival_station_id: params[:end_station_id])
+    @ticket = Ticket.new(user: User.first, train_id: params[:train], departure_station_id: params[:start_station_id], arrival_station_id: params[:end_station_id])
 
     if @ticket.save
       render :show
@@ -19,6 +20,10 @@ class TicketsController < ApplicationController
 
   def set_ticket
     @ticket = Ticket.find(params[:id])
+  end
+
+  def set_serial_number_ticket
+    Ticket.update(serial_number: rand(1000))
   end
 
   def ticket_params

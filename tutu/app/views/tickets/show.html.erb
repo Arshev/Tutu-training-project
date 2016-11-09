@@ -4,15 +4,11 @@
   <tbody>
   <tr>
     <th>Номер билета:</th>
-    <td><%= @ticket %></td>
+    <td><%= @ticket.serial_number %></td>
   </tr>
   <tr>
     <th>Номер поезда:</th>
-    <td><%= @ticket %></td>
-  </tr>
-  <tr>
-    <th>Маршрут:</th>
-    <td><%= @ticket %></td>
+    <td><%= @ticket.train.number_train %></td>
   </tr>
   </tbody>
 </table>
