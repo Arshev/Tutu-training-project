@@ -1,5 +1,46 @@
 <h1>Создаем вагон</h1>
 
-<%= render 'form', wagon: @wagon %>
+<%= form_for [@train, @wagon] do |f| %>
+  <%= render 'common/errors', resource: @wagon %>
 
-<%= link_to 'Назад', wagons_path %>
+  <div class="field">
+    <%= f.label :quantity_top_place %>
+    <%= f.text_field :quantity_top_place %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quantity_down_place %>
+    <%= f.text_field :quantity_down_place %>
+  </div>
+
+  <div class="field">
+    <%= f.label :top_seats %>
+    <%= f.text_field :top_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :top_seats %>
+    <%= f.text_field :top_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :side_top_seats %>
+    <%= f.text_field :side_top_seats %>
+  </div>
+
+  <div class="field">
+    <%= f.label :side_bottom_seats %>
+    <%= f.text_field :side_bottom_seats %>
+  </div>
+
+  <div class="field">
+  <%= f.label :train, "К какому поезду добавляем вагон" %>
+  <%= f.collection_select :train_id, Train.all, :id, :number_train %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Назад', train_wagons_path %>

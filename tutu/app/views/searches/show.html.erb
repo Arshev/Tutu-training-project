@@ -1,0 +1,20 @@
+<h1>Поиск билетов</h1>
+
+
+<%= form_tag(search_train_search_path, method: "post") do %>
+  <strong><%= label_tag(:q, "Выберите начальную станцию:") %></strong>
+  <select name="start_station_id">
+    <% @railway_stations.each do |station| %>
+    <option value="<%= station.id %>"><%= station.title %></option> 
+    <% end %>
+  </select>
+  </br></br><strong><%= label_tag(:q, "Выберите конечную станцию:") %></strong>
+  <select name="end_station_id">
+    <% @railway_stations.each do |station| %>
+    <option value="<%= station.id %>"><%= station.title %></option> 
+    <% end %>
+  </select>
+</br></br>
+<%= submit_tag("Искать") %>
+<% end %>
+

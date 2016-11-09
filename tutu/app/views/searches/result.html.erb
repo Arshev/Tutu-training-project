@@ -1,0 +1,12 @@
+<h1>Результаты поиска</h1>
+
+<% @search_result.each do |train| %>
+<p>Поезд: <%= train.number_train %>, 
+Маршрут: <%= train.route.name %>, 
+Время отправления: <% train.route.railway_stations_routes.each do |station| %>
+<%= station.arrival %> 
+Время прибытия: <%= station.departure %></p>
+<%= link_to "Купить", new_ticket_path(start_station_id: params[:start_station_id], end_station_id: params[:end_station_id], train: train.id) %>
+
+<% end %>
+<% end %>

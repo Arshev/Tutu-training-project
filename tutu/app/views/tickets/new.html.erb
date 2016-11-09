@@ -1,0 +1,11 @@
+<h1>Введите ваши данные:</h1>
+
+<%= form_tag( ticket_path, method: "create") %>
+<%= text_field_tag(:user_name) %>
+<%= label_tag(:user_name, "ФИО") %>
+<%= text_field_tag(:passport) %>
+<%= label_tag(:passport, "Паспорт") %>
+<%= hidden_field_tag(:start_station_id, params[:start_station_id]) %>
+<%= hidden_field_tag(:end_station_id, params[:start_station_id]) %>
+<%= hidden_field_tag(:train, params[:train]) %>
+<%= submit_tag "Купить" %>
