@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     post :search_train, on: :member
   end
   resource :ticket do
-    get :buy_tickets, on: :member
+    get :my_tickets, on: :member
   end
 
   get 'welcome/index'
