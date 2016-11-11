@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
+  
+  resources :tickets
+
+  namespace :admin do
   resources :trains do 
     resources :wagons, shallow: true
   end
@@ -13,6 +17,7 @@ Rails.application.routes.draw do
     post :search_train, on: :member
   end
   resources :tickets
+  end
 
   get 'welcome/index'
 
