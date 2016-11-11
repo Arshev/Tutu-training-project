@@ -17,13 +17,18 @@ class TicketsController < ApplicationController
   end
 
   def index
-    @ticket = current_user.ticket.all
+    @ticket = current_user.tickets.all
+  end
+
+  def destroy
+    @ticket.destroy
+    redirect_to tickets_path
   end
 
   private
 
   def set_ticket
-    @ticket = current_user.ticket.find(params[:id])
+    @ticket = current_user.tickets.find(params[:id])
   end
 
   def ticket_params

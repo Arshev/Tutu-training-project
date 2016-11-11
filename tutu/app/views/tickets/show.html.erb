@@ -3,13 +3,26 @@
 <table>
   <tbody>
   <tr>
+    <th>Серийный номер билета:</th>
+    <td><%= @ticket.serial_number %></td>
+  </tr>
+  <tr>
     <th>Пассажир:</th>
     <td><%= @ticket.user.email %></td>
   </tr>
   <tr>
-    <th>Номер поезда:</th>
+    <th>Номер поезда: </th>
     <td><%= @ticket.train.number_train %></td>
+  </tr>
+  <tr>
+    <th>Станция отправления: </th>
+    <td><%= @ticket.departure_station.title %></td>
+  </tr>
+  <tr>
+    <th>Станция прибытия: </th>
+    <td><%= @ticket.arrival_station.title %></td>
   </tr>
   </tbody>
 </table>
 
+<%= link_to 'Назад', tickets_path %>
