@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :tickets
+  resource :search, only: [:new, :show, :edit] do
+    post :search_train, on: :member
+  end
 
   namespace :admin do
   resources :trains do 
@@ -13,9 +16,6 @@ Rails.application.routes.draw do
     patch :update_time_departure, on: :member
   end
   resources :routes
-  resource :search, only: [:new, :show, :edit] do
-    post :search_train, on: :member
-  end
   resources :tickets
   end
 

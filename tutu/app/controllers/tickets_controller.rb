@@ -1,10 +1,10 @@
 class TicketsController < ApplicationController
 
-  before_action :authenticate_user!, only: :create
+  skip_before_action :verify_authenticity_token, only: [:create]
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   
   def create
-    @ticket = current_user.tickets.new( train_id: params[:train], departure_station_id: params[:start_station_id], arrival_station_id: params[:end_station_id])
+    @ticket = current_user.tickets.new( train_id: params[:train], departure_station_id: params[:start_station_id], arrival_station_id: params[:end_station_id], user_name: params[:user_name], passport: params[:passport])
 
     if @ticket.save
       render :show
