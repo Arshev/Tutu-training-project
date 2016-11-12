@@ -1,0 +1,25 @@
+<%= form_for [:admin, @ticket] do |f| %>
+        <div class="form-group">
+          <%= f.label :departure_station %>
+          <%= f.collection_select :departure_station_id, @ticket.train.route.railway_stations, :id, :title, {} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :arrival_station %>
+          <%= f.collection_select :arrival_station_id, @ticket.train.route.railway_stations, :id, :title, {}%>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :user_name %>
+          <%= f.text_field :user_name %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :passport %>
+          <%= f.text_field :passport %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit 'Изменить' %>
+        </div>
+<% end %>

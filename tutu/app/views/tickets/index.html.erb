@@ -1,0 +1,5 @@
+<h1>Ваши билеты:</h1>
+<p><% @ticket.each do |ticket| %>
+    Серийный номер: <%= link_to ticket.serial_number, ticket %> <%= link_to 'Удалить', ticket, method: :delete, data: { confirm: 'Are you sure?' } %><br/>
+  <% end %>
+</p>

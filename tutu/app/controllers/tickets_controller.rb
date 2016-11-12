@@ -1,10 +1,11 @@
 class TicketsController < ApplicationController
 
+  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token, only: [:create]
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-  before_action :set_serial_number_ticket, only: [:create]
-
+  
   def create
-    @ticket = Ticket.new(user: User.first, train_id: params[:train], departure_station_id: params[:start_station_id], arrival_station_id: params[:end_station_id])
+    @ticket = current_user.tickets.new( train_id: params[:train], departure_station_id: params[:start_station_id], arrival_station_id: params[:end_station_id], user_name: params[:user_name], passport: params[:passport])
 
     if @ticket.save
       render :show
@@ -16,14 +17,19 @@ class TicketsController < ApplicationController
   def show
   end
 
+  def index
+    @ticket = current_user.tickets.all
+  end
+
+  def destroy
+    @ticket.destroy
+    redirect_to tickets_path
+  end
+
   private
 
   def set_ticket
-    @ticket = Ticket.find(params[:id])
-  end
-
-  def set_serial_number_ticket
-    Ticket.update(serial_number: rand(1000))
+    @ticket = current_user.tickets.find(params[:id])
   end
 
   def ticket_params

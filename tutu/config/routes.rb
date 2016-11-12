@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
+  resources :tickets
+  resource :search, only: [:new, :show, :edit] do
+    post :search_train, on: :member
+  end
+
+  namespace :admin do
   resources :trains do 
     resources :wagons, shallow: true
   end
@@ -8,11 +16,7 @@ Rails.application.routes.draw do
     patch :update_time_departure, on: :member
   end
   resources :routes
-  resource :search, only: [:new, :show, :edit] do
-    post :search_train, on: :member
-  end
-  resource :ticket do
-    get :buy_tickets, on: :member
+  resources :tickets
   end
 
   get 'welcome/index'
