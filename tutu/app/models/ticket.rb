@@ -10,6 +10,7 @@ class Ticket < ApplicationRecord
   before_validation :set_number, on: :create
 
   after_create :send_notification
+  before_destroy :cancel_ticket
 
   def route_name
     "#{start_station.title} - #{end_station.title}"
@@ -19,6 +20,12 @@ class Ticket < ApplicationRecord
 
   def send_notification
     TicketsMailer.buy_ticket(self.user, self).deliver_now
+  end
+
+  def cancel_ticket(user, ticket)
+    @user = user
+    @ticket = ticket
+    mail(to: user.email, subject: 'Уведомление об отказе от билета')
   end
 
   def set_number
