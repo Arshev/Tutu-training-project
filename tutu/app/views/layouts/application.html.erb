@@ -58,6 +58,16 @@
                       <%= link_to 'Маршруты', admin_routes_path, class: 'nav-item nav-link' %>
                     </li>
                 <% end %>
+                <% if current_user.admin? %>
+                    <li>
+                      <%= link_to 'Поезда', admin_trains_path, class: 'nav-item nav-link' %>
+                    </li>
+                <% end %>
+                <% if current_user.admin? %>
+                    <li>
+                      <%= link_to 'Станции', admin_railway_stations_path, class: 'nav-item nav-link' %>
+                    </li>
+                <% end %>
                 <li>
                   <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %>
                 </li>
