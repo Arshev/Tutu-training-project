@@ -16,13 +16,13 @@
   </tr>
   <tr>
     <th>Станция отправления: </th>
-    <td><%= @ticket.departure_station.title %></td>
+    <td><%= @ticket.start_station.title %></td>
   </tr>
   <tr>
     <th>Станция прибытия: </th>
-    <td><%= @ticket.arrival_station.title %></td>
+    <td><%= @ticket.end_station.title %></td>
   </tr>
   </tbody>
 </table>
 
-<%= link_to 'Назад', tickets_path %>
+<%= link_to t('common.back'), tickets_path %>

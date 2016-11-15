@@ -5,7 +5,7 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
   
   def create
-    @ticket = current_user.tickets.new( train_id: params[:train], departure_station_id: params[:start_station_id], arrival_station_id: params[:end_station_id], user_name: params[:user_name], passport: params[:passport])
+    @ticket = current_user.tickets.new( train_id: params[:train], start_station_id: params[:start_station_id], end_station_id: params[:end_station_id], user_name: params[:user_name], passport: params[:passport])
 
     if @ticket.save
       render :show
@@ -33,7 +33,7 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:serial_number, :departure_station_id, :arrival_station_id, :user_id, :train_id)
+    params.require(:ticket).permit(:serial_number, :start_station_id, :end_station_id, :user_id, :train_id)
   end
 
 end

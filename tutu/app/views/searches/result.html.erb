@@ -1,12 +1,37 @@
 <h1>Результаты поиска</h1>
 
-<% @search_result.each do |train| %>
-<p>Поезд: <%= train.number_train %>, 
-Маршрут: <%= train.route.name %>, 
-Время отправления: <% train.route.railway_stations_routes.each do |station| %>
-<%= station.arrival %> 
-Время прибытия: <%= station.departure %></p>
-<%= link_to "Купить", new_ticket_path(start_station_id: params[:start_station_id], end_station_id: params[:end_station_id], train: train.id) %>
-
-<% end %>
+<% if @search_result.empty? %>
+     <p>Не найдено подходящих поездов</p>
+ <% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Поезд</th>
+        <th>Маршрут</th>
+        <th>Время отправления</th>
+        <th>Время прибытия</th>
+        <th></th>
+      </tr>
+    </thead>
+      <tbody>
+      <% @search_result.each do |train| %>
+          <tr>
+            <td><%= train.number_train %></td>
+              <td><%= train.route.name %></td>
+              <td>
+              <% train.route.railway_stations_routes.each do |station| %>
+              <%= station.departure %>
+              <% end %>
+              </td>
+              <td>
+              <% train.route.railway_stations_routes.each do |station| %>
+              <%= station.arrival %>
+              <% end %>
+              </td>
+              <td><%= link_to "Купить", new_ticket_path(start_station_id: params[:start_station_id], end_station_id: params[:end_station_id], train: train.id) %>
+              </td>
+          </tr>
+      <% end %>
+      </tbody>
+  </table>
 <% end %>

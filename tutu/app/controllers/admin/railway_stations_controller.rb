@@ -20,7 +20,7 @@ class Admin::RailwayStationsController < Admin::BaseController
 
     respond_to do |format|
       if @railway_station.save
-        format.html { redirect_to @railway_station, notice: 'Railway station was successfully created.' }
+        format.html { redirect_to [:admin, @railway_station], notice: 'Станция успешно создана!' }
         format.json { render :show, status: :created, location: @railway_station }
       else
         format.html { render :new }
@@ -32,7 +32,7 @@ class Admin::RailwayStationsController < Admin::BaseController
   def update
     respond_to do |format|
       if @railway_station.update(railway_station_params)
-        format.html { redirect_to @railway_station, notice: 'Railway station was successfully updated.' }
+        format.html { redirect_to [:admin, @railway_station], notice: 'Станция успешно обновлена!' }
         format.json { render :show, status: :ok, location: @railway_station }
       else
         format.html { render :edit }
@@ -44,7 +44,7 @@ class Admin::RailwayStationsController < Admin::BaseController
   def destroy
     @railway_station.destroy
     respond_to do |format|
-      format.html { redirect_to railway_stations_url, notice: 'Railway station was successfully destroyed.' }
+      format.html { redirect_to admin_railway_stations_url, notice: 'Railway station was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

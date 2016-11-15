@@ -33,19 +33,19 @@
       <% @route.railway_stations.ordered.each do |station| %>
       <tr>
         <td><%= station.title %></td>
-        <td><%= form_tag update_position_railway_station_path(station), method: :patch do %>
+        <td><%= form_tag update_position_admin_railway_station_path(station), method: :patch do %>
           <%= number_field_tag(:position, station.position_in(@route)) %>
           <%= hidden_field_tag(:route_id, @route.id) %>
           <%= submit_tag "Изменить" %>
           <% end %>
         </td>
-        <td><%= form_tag update_time_arrival_railway_station_path(station), method: :patch do %>
+        <td><%= form_tag update_time_arrival_admin_railway_station_path(station), method: :patch do %>
           <%= text_field_tag(:arrival, station.arrival(@route)) %>
           <%= hidden_field_tag(:route_id, @route.id) %>
           <%= submit_tag "Изменить" %>
           <% end %>
         </td>
-        <td><%= form_tag update_time_departure_railway_station_path(station), method: :patch do %>
+        <td><%= form_tag update_time_departure_admin_railway_station_path(station), method: :patch do %>
           <%= text_field_tag(:departure, station.departure(@route)) %>
           <%= hidden_field_tag(:route_id, @route.id) %>
           <%= submit_tag "Изменить" %>
@@ -58,5 +58,5 @@
   <% end %>
 </p>
 
-<%= link_to 'Редактировать', edit_route_path(@route) %> |
-<%= link_to 'Назад', routes_path %>
+<%= link_to 'Редактировать', edit_admin_route_path(@route) %> |
+<%= link_to 'Назад', admin_routes_path %>

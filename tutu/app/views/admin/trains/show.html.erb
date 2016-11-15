@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Number train:</strong>
   <%= @train.number_train %>
@@ -83,11 +81,11 @@
 <p>Номера вагонов в составе:
 
 <% @train.wagons.each do |wagon| %>
-<ul><li><%= link_to "Вагон № #{wagon.number_wagon}", wagon.train %></li></ul>
+<ul><li><%= link_to "Вагон № #{wagon.number_wagon}", [:admin, wagon.train] %></li></ul>
 <% end %>
 </p>
 
-<div><%= link_to "Добавить вагон", new_train_wagon_path(@train) %></div>
+<div><%= link_to "Добавить вагон", new_admin_train_wagon_path(@train) %></div>
  
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+<%= link_to 'Редактировать', edit_admin_train_path(@train) %> |
+<%= link_to t('common.back'), admin_trains_path %>
