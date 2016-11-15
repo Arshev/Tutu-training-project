@@ -1,8 +1,6 @@
 class Ticket < ApplicationRecord
   belongs_to :train
   belongs_to :user
-  belongs_to :departure_station, class_name: 'RailwayStation', foreign_key: :departure_station_id
-  belongs_to :arrival_station, class_name: 'RailwayStation', foreign_key: :arrival_station_id
   belongs_to :start_station, class_name: 'RailwayStation', foreign_key: :start_station_id
   belongs_to :end_station, class_name: 'RailwayStation', foreign_key: :end_station_id
 
@@ -22,10 +20,8 @@ class Ticket < ApplicationRecord
     TicketsMailer.buy_ticket(self.user, self).deliver_now
   end
 
-  def cancel_ticket(user, ticket)
-    @user = user
-    @ticket = ticket
-    mail(to: user.email, subject: 'Уведомление об отказе от билета')
+  def cancel_ticket
+    TicketsMailer.cancel_ticket(self.user, self).deliver_now
   end
 
   def set_number

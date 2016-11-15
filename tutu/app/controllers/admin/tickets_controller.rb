@@ -32,7 +32,7 @@ class Admin::TicketsController < Admin::BaseController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:serial_number, :departure_station_id, :arrival_station_id, :user_id, :train_id)
+    params.require(:ticket).permit(:serial_number, :start_station_id, :end_station_id, :user_id, :train_id)
   end
 
 end
