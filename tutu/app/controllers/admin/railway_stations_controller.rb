@@ -33,10 +33,7 @@ class Admin::RailwayStationsController < Admin::BaseController
     respond_to do |format|
       if @railway_station.update(railway_station_params)
         format.html { redirect_to [:admin, @railway_station], notice: 'Станция успешно обновлена!' }
-        format.json { render :show, status: :ok, location: @railway_station }
-      else
         format.html { render :edit }
-        format.json { render json: @railway_station.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,13 +55,13 @@ class Admin::RailwayStationsController < Admin::BaseController
   def update_time_arrival
     @route = Route.find(params[:route_id])
     @railway_station.update_time_arrival(@route, params[:arrival])
-    redirect_to @route
+    redirect_to [:admin, @route]
   end
 
   def update_time_departure
     @route = Route.find(params[:route_id])
     @railway_station.update_time_departure(@route, params[:departure])
-    redirect_to @route
+    redirect_to [:admin, @route]
   end
 
   private
