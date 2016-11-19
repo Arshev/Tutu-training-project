@@ -1,20 +1,29 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Поезда</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Номер состава</th>
+      <th> Название</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <%= render @trains %>
+    <% @trains.each do |train| %>
+      <tr>
+        <td>
+          <div id="train_title_<%= train.id %>">
+            <%= train.number_train %>
+          </div>
+          <%= render 'form', train: train, hidden: true %>
+        </td>
+        <td><%= link_to 'Показать', [:admin, train] %></td>
+        <td><%= link_to 'Редактировать', '', class: 'edit_train', data: { train_id: train.id } %></td>
+        <td><%= link_to 'Удалить', [:admin, train], method: :delete, data: { confirm: 'Уверены?' } %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
-
 <br>
 
 <%= link_to 'Создать поезд', new_admin_train_path %>

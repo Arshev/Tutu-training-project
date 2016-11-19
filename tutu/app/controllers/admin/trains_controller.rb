@@ -28,12 +28,10 @@ class Admin::TrainsController < Admin::BaseController
   end
 
   def update
-    respond_to do |format|
-      if @train.update(train_params)
-        format.html { redirect_to [:admin, @train], notice: 'Поезд удачно изменен!' }
-      else
-        format.html { render :edit }
-      end
+    if @train.update(train_params)
+        redirect_to admin_trains_path, notice: 'Поезд удачно изменен!'
+    else
+        render :edit
     end
   end
 
