@@ -30,11 +30,10 @@ class Admin::RailwayStationsController < Admin::BaseController
   end
 
   def update
-    respond_to do |format|
-      if @railway_station.update(railway_station_params)
-        format.html { redirect_to [:admin, @railway_station], notice: 'Станция успешно обновлена!' }
-        format.html { render :edit }
-      end
+    if @railway_station.update(railway_station_params)
+        redirect_to admin_railway_stations_path, notice: 'Станция успешно обновлена!'
+    else
+        render :edit
     end
   end
 
