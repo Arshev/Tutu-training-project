@@ -1,20 +1,25 @@
 <h1>Поиск билетов</h1>
 
-
-<%= form_tag(search_train_search_path, method: "post") do %>
-  <strong><%= label_tag(:q, "Выберите начальную станцию:") %></strong>
-  <select name="start_station_id">
-    <% @railway_stations.each do |station| %>
-    <option value="<%= station.id %>"><%= station.title %></option> 
-    <% end %>
-  </select>
-  </br></br><strong><%= label_tag(:q, "Выберите конечную станцию:") %></strong>
-  <select name="end_station_id">
-    <% @railway_stations.each do |station| %>
-    <option value="<%= station.id %>"><%= station.title %></option> 
-    <% end %>
-  </select>
-</br></br>
-<%= submit_tag("Искать") %>
-<% end %>
-
+<div class="row">
+  <%= form_tag(search_train_search_path, method: "post", class: 'search_form') do %>
+  <div class="col-md-4">
+    <strong><%= label_tag(:q, "Выберите начальную станцию:") %></strong>
+    <select name="start_station_id" class='form-control'>
+      <% @railway_stations.each do |station| %>
+      <option value="<%= station.id %>"><%= station.title %></option> 
+      <% end %>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <strong><%= label_tag(:q, "Выберите конечную станцию:") %></strong>
+    <select name="end_station_id" class='form-control'>
+      <% @railway_stations.each do |station| %>
+      <option value="<%= station.id %>"><%= station.title %></option> 
+      <% end %>
+    </select>
+  </div><br>
+  <div class="col-md-4">
+      <%= submit_tag "Найти", class: 'btn btn-primary find' %>
+  </div>
+  <% end %>
+</div>
